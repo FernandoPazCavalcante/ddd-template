@@ -1,0 +1,100 @@
+{
+    "folders": [
+      {
+        "path": "."
+      }
+    ],
+    "settings": {
+      "workbench.iconTheme": "material-icon-theme",
+      "git.autofetch": false,
+      "editor.suggestSelection": "first",
+      "csharp.format.enable": true,
+      "[csharp]": {
+        "editor.codeLens": true,
+        "editor.autoIndent": "full"
+      },
+      "explorer.confirmDelete": false,
+      "explorer.autoReveal": false,
+      "dotnet-test-explorer.runInParallel": false,
+      "vssolution.createTemplateFolderQuestion": true,
+      "dotnet-test-explorer.testProjectPath": "./Tests/Tests.@(csproj|vbproj|fsproj)",
+      "dotnet-test-explorer.autoWatch": false
+    },
+    "tasks": {
+      "version": "2.0.0",
+      "tasks": [
+        {
+          "label": "build",
+          "command": "dotnet",
+          "type": "process",
+          "args": [
+            "build",
+            "${workspaceFolder}/Src/API/API.csproj",
+            "/property:GenerateFullPaths=true",
+            "/consoleloggerparameters:NoSummary"
+          ],
+          "problemMatcher": "$msCompile"
+        },
+        {
+          "label": "publish",
+          "command": "dotnet",
+          "type": "process",
+          "args": [
+            "publish",
+            "${workspaceFolder}/Src/API/API.csproj",
+            "/property:GenerateFullPaths=true",
+            "/consoleloggerparameters:NoSummary"
+          ],
+          "problemMatcher": "$msCompile"
+        },
+        {
+          "label": "watch",
+          "command": "dotnet",
+          "type": "process",
+          "args": [
+            "watch",
+            "run",
+            "--project",
+            "${workspaceFolder}/Src/API/API.csproj"
+          ],
+          "problemMatcher": "$msCompile"
+        }
+      ]
+    },
+    "launch": {
+      "version": "0.2.0",
+      "configurations": [
+        {
+          // Use IntelliSense to find out which attributes exist for C# debugging
+          // Use hover for the description of the existing attributes
+          // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+          "name": ".NET Core Launch (web)",
+          "type": "coreclr",
+          "request": "launch",
+          "preLaunchTask": "build",
+          // If you have changed target frameworks, make sure to update the program path.
+          "program": "${workspaceFolder}/Src/API/bin/Debug/net6.0/API.dll",
+          "args": [],
+          "cwd": "${workspaceFolder}/Src/API",
+          "stopAtEntry": false,
+          // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
+          "serverReadyAction": {
+            "action": "openExternally",
+            "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+          },
+          "env": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+          },
+          "sourceFileMap": {
+            "/Views": "${workspaceFolder}/Views"
+          }
+        },
+        {
+          "name": ".NET Core Attach",
+          "type": "coreclr",
+          "request": "attach"
+        }
+      ]
+    }
+  }
+  
